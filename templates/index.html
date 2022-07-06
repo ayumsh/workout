@@ -1,0 +1,35 @@
+
+        
+{% extends 'base.html' %}
+
+        
+{% block body %}
+            
+          <div class="container-fluid">
+            <form action="/" method="POST">
+            <div class=" mb-3">
+              <label for="exampleInputEmail1" class="form-label">Name</label>
+              <input  class="form-control" name="title" id="title" aria-describedby="emailHelp">  
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Email ID</label>
+              <input  type="email" class="form-control"   name="desc" id="desc">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Contact No</label>
+              <input  class="form-control"   name="contact" id="contact">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">College Name</label>
+              <input  class="form-control"   name="collegename" id="collegename">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">College Address</label>
+              <input  class="form-control"   name="collegeaddress" id="collegeaddress">
+            </div>
+            
+            <button type="submit" class="btn btn-primary ">Submit</button>
+          </form>
+          </div>
+
+{% endblock body %}
