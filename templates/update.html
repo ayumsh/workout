@@ -5,32 +5,39 @@
         
 {% block body %}
             
-
-        <h2>Update</h2>
-          <div class="container-fluid">
+          
+          <div class="registration-form">
             <form action="/update/{{todo.sno}}" method="POST">
-            <div class=" mb-3">
-              <label for="exampleInputEmail1" class="form-label">Name</label>
-              <input  class="form-control" value="{{todo.title}}" name="title" id="title" aria-describedby="emailHelp">  
+                <div class="form-group">
+                    <input type="number" class="form-control item" value="{{todo.push}}" name="push" id="push" step="10" min="0" max="100" placeholder="Push">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control item" value="{{todo.pull}}" name="pull" id="pull"  step="10" min="0" max="100" placeholder="Pull">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control item" value="{{todo.legs}}" name="legs" id="legs" step="10" min="0" max="100" placeholder="Legs">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control item" value="{{todo.abs}}" name="abs" id="abs"  step="10" min="0" max="100"placeholder="Abs">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control item" value="{{todo.cardio}}" name="cardio" id="cardio" step="10" min="0" max="100" placeholder="Cardio">
+                </div>
+                <div class="form-group">
+                    <input type="number" class="form-control item" value="{{todo.protien}}" name="protien" id="protien" min="0" max="2" placeholder="Protien">
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control item" value="{{todo.date}}" name="date" id="date" placeholder="Date">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-block create-account">Update</button>
+                </div>
+            </form>
+            <div class="social-media">
+                
+                
             </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Email ID</label>
-              <input type="email" class="form-control" value="{{todo.desc}}"  name="desc" id="desc">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Contact No</label>
-              <input  class="form-control"  value="{{todo.contact}}" name="contact" id="contact">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">College Name</label>
-              <input  class="form-control"  value="{{todo.collegename}}" name="collegename" id="collegename">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">College Address</label>
-              <input  class="form-control"  value="{{todo.collegeaddress}}" name="collegeaddress" id="collegeaddress">
-            </div>
-            
-            <button type="submit" class="btn btn-primary ">Update</button>
-          </form>
-          </div>         
+          </div>
+          <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+          <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 {% endblock body %}

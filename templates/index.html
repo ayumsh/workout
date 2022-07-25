@@ -1,35 +1,41 @@
-
-        
 {% extends 'base.html' %}
 
         
 {% block body %}
             
-          <div class="container-fluid">
-            <form action="/" method="POST">
-            <div class=" mb-3">
-              <label for="exampleInputEmail1" class="form-label">Name</label>
-              <input  class="form-control" name="title" id="title" aria-describedby="emailHelp">  
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Email ID</label>
-              <input  type="email" class="form-control"   name="desc" id="desc">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Contact No</label>
-              <input  class="form-control"   name="contact" id="contact">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">College Name</label>
-              <input  class="form-control"   name="collegename" id="collegename">
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">College Address</label>
-              <input  class="form-control"   name="collegeaddress" id="collegeaddress">
-            </div>
+<div class="registration-form">
+  <form action="/" method="POST">
+        <div class="form-icon">
+            <span><img class="hemlo"  src="{{ url_for('static', filename='gokunav.png') }}"></img></span>
             
-            <button type="submit" class="btn btn-primary ">Submit</button>
-          </form>
-          </div>
+        </div>
+      <div class="form-group">
+          <input type="number" class="form-control item" name="push" id="push" step="10" min="0" max="100" placeholder="Push">
+      </div>
+      <div class="form-group">
+          <input type="number" class="form-control item" name="pull" id="pull"  step="10" min="0" max="100" placeholder="Pull">
+      </div>
+      <div class="form-group">
+          <input type="number" class="form-control item" name="legs" id="legs" step="10" min="0" max="100" placeholder="Legs">
+      </div>
+      <div class="form-group">
+          <input type="number" class="form-control item" name="abs" id="abs"  step="10" min="0" max="100"placeholder="Abs">
+      </div>
+      <div class="form-group">
+          <input type="number" class="form-control item" name="cardio" id="cardio" step="10" min="0" max="100" placeholder="Cardio">
+      </div>
+      <div class="form-group">
+          <input type="number" class="form-control item" name="protien" id="protien" min="0" max="2" placeholder="Protien">
+      </div>
+      <div class="form-group">
+          <input type="date" class="form-control item" name="date" id="date" placeholder="Date">
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-block create-account">Submit</button>
+      </div>
+  </form>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
 
 {% endblock body %}

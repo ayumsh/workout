@@ -1,6 +1,7 @@
+from email.policy import default
 from flask import Flask, redirect, render_template, request,redirect
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+
 
 
 app = Flask(__name__)
@@ -12,29 +13,32 @@ db = SQLAlchemy(app)
 
 class Todo(db.Model):
     sno=db.Column(db.Integer, primary_key=True)
-    title=db.Column(db.String(200),nullable=False)
-    desc=db.Column(db.String(500),nullable=False)
-    contact=db.Column(db.String(20),nullable=False)
-    collegename=db.Column(db.String(500),nullable=False)
-    collegeaddress=db.Column(db.String(500),nullable=False)
-    date_created=db.Column(db.DateTime,default=datetime.utcnow)
+    push=db.Column(db.Integer,nullable=False)
+    pull=db.Column(db.Integer,nullable=False)
+    legs=db.Column(db.Integer,nullable=False)
+    abs=db.Column(db.Integer,nullable=False)
+    cardio=db.Column(db.Integer,nullable=False)
+    protien=db.Column(db.Integer,nullable=False)
+    date=db.Column(db.String(11),nullable=False)
 
     def __repr__(self) ->str:
-        return f"{self.sno} - {self.title}"
+        return f"{self.sno} - {self.push}"
 
 @app.route('/', methods=['GET','POST'])
 def hello():
     if request.method=='POST':
-        title= request.form['title']
-        desc = request.form['desc']
-        contact = request.form['contact']
-        collegename = request.form['collegename']
-        collegeaddress = request.form['collegeaddress']
-        todo=Todo(title=title,desc=desc,contact=contact,collegename=collegename,collegeaddress=collegeaddress)
+        push= request.form['push']
+        pull = request.form['pull']
+        legs = request.form['legs']
+        abs = request.form['abs']
+        cardio = request.form['cardio']
+        protien = request.form['protien']  
+        date = request.form['date']      
+        todo=Todo(push=push,pull=pull,legs=legs,abs=abs,cardio=cardio,protien=protien, date=date)
         db.session.add(todo)
         db.session.commit()
-    allTodo=Todo.query.all()
-    
+        return redirect("/database")
+    allTodo=Todo.query.all()    
     return render_template('index.html', allTodo=allTodo)
 
 @app.route('/database')
@@ -46,17 +50,21 @@ def products():
 @app.route('/update/<int:sno>', methods=['GET','POST'])
 def Update(sno):
     if request.method=='POST':
-        title= request.form['title']
-        desc = request.form['desc']
-        contact = request.form['contact']
-        collegename = request.form['collegename']
-        collegeaddress = request.form['collegeaddress']
+        push= request.form['push']
+        pull = request.form['pull']
+        legs = request.form['legs']
+        abs = request.form['abs']
+        cardio = request.form['cardio']
+        protien = request.form['protien']
+        date = request.form['date']
         todo=Todo.query.filter_by(sno=sno).first()
-        todo.title=title
-        todo.desc=desc
-        todo.contact=contact
-        todo.collegename=collegename
-        todo.collegeaddress=collegeaddress
+        todo.push=push
+        todo.pull=pull
+        todo.legs=legs
+        todo.abs=abs
+        todo.cardio=cardio
+        todo.protien=protien
+        todo.date=date
         db.session.add(todo)
         db.session.commit()
         return redirect("/database")
@@ -72,4 +80,4 @@ def Delete(sno):
     return redirect('/database')
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    app.run(debug=True, port=3000)
